@@ -1,28 +1,28 @@
-var uniq = function(array) {
+Array.prototype.uniq = function() {
   var output = [];
-  for(var j=0; j<array.length; j++) {
+  for(var j=0; j<this.length; j++) {
     var seen = false;
     for(var i=0; i<output.length; i++) {
-      if(output[i] === array[j]) {seen = true;}
+      if(output[i] === this[j]) {seen = true;}
     }
-    if(seen === false) { output.push(array[j]); }
+    if(seen === false) { output.push(this[j]); }
   }
   return output;
 };
 
-var twoSum = function(array) {
+Array.prototype.twoSum = function() {
   var output = [];
-  for(var i=0; i<array.length; i++) {
-    for(var j=i; j<array.length; j++) {
-      if(array[i] + array[j] === 0) {output.push([i, j]); }
+  for(var i=0; i<this.length; i++) {
+    for(var j=i; j<this.length; j++) {
+      if(this[i] + this[j] === 0) {output.push([i, j]); }
     }
   }
   return output;
 };
 
-var transpose = function(array) {
-  var width = array.length;
-  var height = array[0].length;
+Array.prototype.transpose = function() {
+  var width = this.length;
+  var height = this[0].length;
 
   var output = new Array(height);
   for (var i=0; i<height; i++) {
@@ -31,7 +31,7 @@ var transpose = function(array) {
 
   for (i=0; i<width; i++) {
     for (var j=0; j<height; j++) {
-      output[j][i] = array[i][j];
+      output[j][i] = this[i][j];
     }
   }
   return output;
@@ -39,10 +39,12 @@ var transpose = function(array) {
 
 
 var test = [1, 2, 1, 3, 3];
-console.log(uniq(test));
+// console.log(uniq(test));
+//
+// var test2 = [1, 2, 4, 5, -4, 2, -2];
+// console.log(twoSum(test2));
+//
+// var test3 = [[1, 2, 3], [4, 5, 6]];
+// console.log(transpose(test3));
 
-var test2 = [1, 2, 4, 5, -4, 2, -2];
-console.log(twoSum(test2));
-
-var test3 = [[1, 2, 3], [4, 5, 6]];
-console.log(transpose(test3));
+console.log(test.uniq());
